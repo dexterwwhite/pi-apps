@@ -1,0 +1,6 @@
+#password manager backend
+__pycache__/
+*.pyc
+venv/
+.env
+*.db
