@@ -3,19 +3,14 @@ from sqlalchemy.orm import Session
 
 from . import models
 from .database import engine, SessionLocal
+from .routes import router
 
-app = FastAPI()
+app = FastAPI(title="Password Manager API")
 
 # Create tables in the database
 models.Base.metadata.create_all(bind=engine)
 
-# Dependency to get DB session per request
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+app.include_router(router)
 
 @app.get("/")
 def home():
