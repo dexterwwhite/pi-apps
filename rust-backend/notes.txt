@@ -1,0 +1,16 @@
+install deps:
+cargo build
+
+run app:
+cargo run
+
+clean global registry:
+rm -rf ~/.cargo/registry
+
+For cleaning dependencies:
+cargo cache
+cargo cache --help
+cargo cache clean-unref   # removes crates that are unreferenced in Cargo.toml
+cargo cache -c registry   # downloaded crates
+cargo cache -c build      # compiled artifacts
+cargo cache -c git        # git-based deps
